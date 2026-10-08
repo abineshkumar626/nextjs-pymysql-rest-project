@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+:root {
+  --ink: #172033;
+  --muted: #68738a;
+  --line: #e5e9f1;
+  --surface: #ffffff;
+  --canvas: #f5f7fb;
+  --primary: #5b5ce6;
+  --primary-dark: #4646c7;
+  --danger: #d84c5e;
+  --success: #16866b;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 8% 5%, rgba(91, 92, 230, .12), transparent 27%),
+    radial-gradient(circle at 90% 80%, rgba(52, 191, 166, .09), transparent 25%),
+    var(--canvas);
+  font-family: "DM Sans", sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell {
+  width: min(1440px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 38px 0 56px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  color: white;
+  background: linear-gradient(145deg, #7778f5, #4e4fd5);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(91, 92, 230, .25);
+  font: 800 16px "Manrope", sans-serif;
+}
+
+.topbar h1, .panel h2 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+.topbar h1 { font-size: clamp(24px, 3vw, 32px); letter-spacing: -.04em; }
+.eyebrow { margin: 0 0 4px; color: var(--primary); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+.student-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  padding: 10px 16px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, .72);
+  border: 1px solid rgba(255, 255, 255, .9);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.student-count strong { color: var(--ink); font: 800 20px "Manrope", sans-serif; }
+.student-count span { font-size: 13px; }
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, .72fr) minmax(580px, 1.28fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background: rgba(255, 255, 255, .88);
+  border: 1px solid rgba(255, 255, 255, .9);
+  border-radius: 22px;
+  box-shadow: 0 18px 55px rgba(35, 46, 74, .08);
+  backdrop-filter: blur(14px);
+}
+
+.form-panel { padding: 26px; }
+.records-panel { padding: 26px 26px 10px; min-width: 0; }
+
+.panel-heading, .records-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.panel h2 { font-size: 21px; letter-spacing: -.025em; }
+.status-dot { display: inline-flex; align-items: center; gap: 7px; color: var(--success); font-size: 12px; font-weight: 700; }
+.status-dot::before { content: ""; width: 8px; height: 8px; background: #26b98f; border-radius: 50%; box-shadow: 0 0 0 4px rgba(38, 185, 143, .13); }
+
+.student-form { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; margin-top: 24px; }
+.student-form label { display: flex; flex-direction: column; gap: 8px; color: #4d586e; font-size: 13px; font-weight: 600; }
+.student-form input {
+  width: 100%;
+  padding: 13px 14px;
+  color: var(--ink);
+  background: #f8f9fc;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.student-form input:focus { background: white; border-color: #8f90f2; box-shadow: 0 0 0 4px rgba(91, 92, 230, .1); }
+.full-width { grid-column: 1 / -1; }
+.form-actions { display: flex; gap: 10px; }
+
+button { border: 0; border-radius: 10px; font-weight: 700; transition: transform .15s, opacity .15s, background .15s; }
+button:hover:not(:disabled) { transform: translateY(-1px); }
+button:disabled { cursor: not-allowed; opacity: .65; }
+.primary-button { padding: 13px 20px; color: white; background: linear-gradient(135deg, #6d6df0, var(--primary-dark)); box-shadow: 0 8px 20px rgba(91, 92, 230, .22); }
+.secondary-button { padding: 13px 18px; color: #59647a; background: #edf0f5; }
+.success-message, .error-message { margin: 17px 0 0; padding: 11px 13px; border-radius: 10px; font-size: 13px; }
+.success-message { color: var(--success); background: #e8f8f3; }
+.error-message { color: #ad3445; background: #fff0f2; }
+
+.records-header { align-items: center; margin-bottom: 20px; }
+.search-box { display: flex; align-items: center; width: min(290px, 100%); padding: 0 13px; color: #8b95a8; background: #f7f8fb; border: 1px solid var(--line); border-radius: 11px; }
+.search-box input { width: 100%; padding: 11px 8px; color: var(--ink); background: transparent; border: 0; outline: none; }
+.search-box:focus-within { border-color: #8f90f2; box-shadow: 0 0 0 3px rgba(91, 92, 230, .09); }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { padding: 12px 14px; color: #7a8497; background: #f7f8fb; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-align: left; text-transform: uppercase; }
+th:first-child { border-radius: 10px 0 0 10px; }
+th:last-child { border-radius: 0 10px 10px 0; }
+td { padding: 15px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tbody tr { transition: background .15s; }
+tbody tr:hover { background: #fafbfe; }
+td strong, td span { display: block; }
+td strong { font-size: 14px; }
+td td > span:not(.id-badge):not(.course-pill) { margin-top: 4px; color: var(--muted); font-size: 12px; }
+.id-badge { color: #6e7790; font-size: 12px; font-weight: 700; }
+.course-pill { display: inline-block; padding: 6px 9px; color: #5557c8; background: #eff0ff; border-radius: 999px; font-size: 11px; font-weight: 700; }
+.row-actions { display: flex; gap: 7px; }
+.edit-button, .delete-button { padding: 7px 10px; font-size: 12px; }
+.edit-button { color: #4c50b7; background: #efefff; }
+.delete-button { color: #b83e4e; background: #fff0f2; }
+
+.empty-state { display: grid; place-items: center; min-height: 260px; padding: 30px; color: var(--muted); text-align: center; }
+.empty-state strong { margin: 6px 0 3px; color: var(--ink); font: 700 16px "Manrope", sans-serif; }
+.empty-state p { margin: 0; font-size: 13px; }
+.empty-icon { color: var(--primary); font-size: 30px; }
+.error-state { color: #b83e4e; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 1080px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .form-panel { order: 1; }
+  .records-panel { order: 2; }
+}
+
+@media (max-width: 620px) {
+  .app-shell { width: min(100% - 24px, 1440px); padding-top: 22px; }
+  .topbar { align-items: flex-start; }
+  .student-count { display: none; }
+  .form-panel, .records-panel { padding: 20px; border-radius: 17px; }
+  .student-form { grid-template-columns: 1fr; }
+  .full-width { grid-column: auto; }
+  .records-header { align-items: stretch; flex-direction: column; }
+  .search-box { width: 100%; }
+  .row-actions { flex-direction: column; }
+}
